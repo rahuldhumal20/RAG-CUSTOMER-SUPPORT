@@ -79,7 +79,7 @@ def process_node(state):
     
 def answer_node(state):
 
-    memory=get_memory_context()
+    memory = get_memory_context()
 
     prompt = f"""
     You are a professional customer support assistant.
@@ -101,17 +101,24 @@ def answer_node(state):
     Answer:
     """
 
-    result=llm.invoke(prompt)
+    try:
+        result = llm.invoke(prompt)
 
-    save_to_memory(
-       state["query"],
-       result.content
-    )
+        save_to_memory(
+            state["query"],
+            result.content
+        )
 
-    return {
-      "response":result.content
-    }
+        return {
+            "response": result.content
+        }
 
+    except Exception as e:
+        print(f"LLM Error: {e}")  # you can use logging later
+
+        return {
+            "response": "We are experiencing technical difficulties. Please try again later."
+        }
 
 def hitl_node(state):
 
