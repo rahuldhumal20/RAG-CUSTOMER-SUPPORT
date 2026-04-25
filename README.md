@@ -113,10 +113,12 @@ git clone https://github.com/your-username/rag-customer-support.git
 cd rag-customer-support
 
 2. Create Virtual Environment
+
 python -m venv venv
 venv\Scripts\activate
 
 3. Install Dependencies
+
 pip install -r requirements.txt
 
 4. Set Environment Variables
@@ -126,9 +128,11 @@ Create .env file:
 GROQ_API_KEY=your_api_key_here
 
 5. Run Server
+
 uvicorn app.main:app --reload
 
 6. Open API Docs
+
 http://127.0.0.1:8000/docs
 
 ## 🧠 Design Decisions
